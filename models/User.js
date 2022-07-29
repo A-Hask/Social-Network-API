@@ -36,10 +36,10 @@ const UserSchema = new Schema(
 );
 
 //VIRTUALS GO HERE
-//NOTE: modified from model/Pizza.js in pizza-hunt. ask for verification on accuracy
+//NOTE: modified from model/Pizza.js in pizza-hunt. ask for verification
 UserSchema.virtual("friendCount").get(function () {
   return this.friends.reduce(
-    (total, friends) => total + User.friends.length + 1,
+    (total, User) => total + User.friends.length + 1,
     0
   );
 });
