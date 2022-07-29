@@ -12,7 +12,7 @@ const ReactionSchema = new Schema(
       required: true,
       max: 280,
     },
-    //should this be writtenBy like in pizza-hunt model/comment.js?
+    //should this be "writtenBy" like in pizza-hunt model/comment.js?
     username: {
       type: String,
       required: true,
@@ -57,7 +57,7 @@ const ThoughtSchema = new Schema(
   }
 );
 
-//doublecheck with tutor or TA for accuracy
+//doublecheck for accuracy
 ThoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });

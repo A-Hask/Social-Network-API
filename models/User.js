@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const dateFormat = require("../utils/dateFormat");
 
 const UserSchema = new Schema(
   {
@@ -31,19 +30,19 @@ const UserSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
-      getters: true,
     },
+    id: false,
   }
 );
 
 //VIRTUALS GO HERE
 //NOTE: modified from model/Pizza.js in pizza-hunt. ask for verification on accuracy
-UserSchema.virtual("friendCount").get(function () {
-  return this.friends.reduce(
-    (total, friend) => total + this.friends.length + 1,
-    0
-  );
-});
+// UserSchema.virtual("friendCount").get(function () {
+//   return this.friends.reduce(
+//     (total, User) => total + this.friends.length + 1,
+//     0
+//   );
+// });
 
 const User = model("User", UserSchema);
 
