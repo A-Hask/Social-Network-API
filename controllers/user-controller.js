@@ -56,6 +56,46 @@ const userController = {
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.json(err));
   },
+
+  addFriend({ params, body }, res) {
+    User.findOneAndUpdate(
+      { _id: params.thoughtId },
+      { $push: { reactions: body } },
+      { new: true, runValidators: true }
+    )
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          res.status(404).json({ message: "No user found with this id!" });
+          return;
+        }
+        res.json(dbUserData);
+      })
+      .catch((err) => res.json(err));
+  },
+
+  removeFriend({ params }, res) {
+    Friend.findOneAndDelete({ _id: params.friendId })
+      .then((deletedFriend) => {
+        if (!deletedFriend) {
+          return res.status(404).json({ message: "No friend with this id!" });
+        }
+        return User.findOneAndUpdate(
+          { _id: params.userId },
+          { $pull: { friends: params.friendId } },
+          { new: true }
+        );
+      })
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          res.status(404).json({ message: "No user found with this id!" });
+          return;
+        }
+        res.json(dbUserData);
+      })
+      .catch((err) => res.json(err));
+  },
 };
+
+//BONUS! REMOVE USER'S THOUGHTS WHEN USER IS DELETED
 
 module.exports = userController;
