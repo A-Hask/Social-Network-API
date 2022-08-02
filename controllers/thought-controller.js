@@ -35,7 +35,6 @@ const thoughtController = {
       .then(({ _id }) => {
         return User.findOneAndUpdate(
           { _id: params.userId },
-          // thoughts plural or singular?
           { $push: { thoughts: _id } },
           { new: true }
         );

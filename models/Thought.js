@@ -12,7 +12,6 @@ const ReactionSchema = new Schema(
       required: true,
       max: 280,
     },
-    //should this be "writtenBy" like in pizza-hunt model/comment.js?
     username: {
       type: String,
       required: true,
