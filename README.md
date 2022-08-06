@@ -37,6 +37,8 @@ Clone the code from GitHub. Install the NPM packages and Mongoose. Start the app
 ## Usage Information
 
 The user can add a user, create thoughts, react to thoughts, and add friends
+<br/>
+https://drive.google.com/file/d/1ieqACYggD54l7KWxRJU3wGedwPTfpGc5/view?usp=sharing
 
 ---
 
