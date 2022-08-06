@@ -35,6 +35,11 @@ const UserSchema = new Schema(
   }
 );
 
+// User.post("remove", function (next) {
+//   thoughts.remove({ username: this.username }).exec();
+//   next();
+// });
+
 //VIRTUALS GO HERE
 UserSchema.virtual("friendCount").get(function () {
   return this.friends.length;
